@@ -10,6 +10,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -80,11 +81,22 @@ public class Main {
         WebDriver driver = new FirefoxDriver();
         driver.manage().window().maximize();
         driver.get("https://the-internet.herokuapp.com/");
-        driver.findElement(By.linkText("Checkboxes")).click();
+      /*  driver.findElement(By.linkText("Checkboxes")).click();
         driver.findElement(By.xpath("//input[@type='checkbox'][1]")).click();
+*/
 
+        driver.findElement(By.linkText("Add/Remove Elements")).click();
+        driver.findElement(By.xpath("//button[@onclick='addElement()']")).click();
+        driver.findElement(By.xpath("//button[@onclick='addElement()']")).click();
+        driver.findElement(By.xpath("//button[@onclick='addElement()']")).click();
+        driver.findElement(By.xpath("//button[@onclick='addElement()']")).click();
+        driver.findElement(By.xpath("//button[@onclick='addElement()']")).click();
 
+        driver.findElement(By.className("added-manually")).click();
+        driver.findElement(By.className("added-manually")).click();
 
+        List<WebElement> deleteButtons =driver.findElements(By.className("added-manually"));
+        Assert.assertEquals(deleteButtons.size(),3);
 
 
     }

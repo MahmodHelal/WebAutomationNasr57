@@ -10,6 +10,9 @@ public class HomePage {
 
     By formLinkBy = By.linkText("Form Authentication");
     By checkBoxLocator = By.linkText("Checkboxes");
+    By dropDownLocator = By.linkText("Dropdown");
+
+    By addRemoveLocator = By.linkText("Add/Remove Elements");
 
 
     public HomePage(WebDriver driver){
@@ -25,6 +28,16 @@ public class HomePage {
         driver.findElement(checkBoxLocator).click();
         return new CheckBoxesPage(driver);
     }
+    public AddRemovePage clickOnAddRemovePage(){
+        driver.findElement(addRemoveLocator).click();
+        return new AddRemovePage(driver);
+    }
+
+    public DropdownPage clickOnDropdown(){
+        driver.findElement(dropDownLocator).click();
+        return new DropdownPage(driver);
+    }
+
 
 
 }

@@ -1,9 +1,6 @@
 package BaseTest;
 
-import Pages.CheckBoxesPage;
-import Pages.FormPage;
-import Pages.HomePage;
-import Pages.SecureArea;
+import Pages.*;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -19,6 +16,8 @@ public class BaseTest {
     protected FormPage formPage;
     protected SecureArea secureArea;
     protected CheckBoxesPage checkBoxesPage;
+    protected AddRemovePage addRemovePage;
+    protected DropdownPage dropdownPage;
 
     @BeforeClass
     public void setup(){
