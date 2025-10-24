@@ -1,5 +1,6 @@
 package BaseTest;
 
+import Pages.CheckBoxesPage;
 import Pages.FormPage;
 import Pages.HomePage;
 import Pages.SecureArea;
@@ -17,11 +18,12 @@ public class BaseTest {
     protected  WebDriver driver;
     protected FormPage formPage;
     protected SecureArea secureArea;
+    protected CheckBoxesPage checkBoxesPage;
 
     @BeforeClass
     public void setup(){
-        WebDriverManager.firefoxdriver().setup();
-        driver = new FirefoxDriver();
+        WebDriverManager.chromedriver().setup();
+        driver = new ChromeDriver();
         driver.manage().window().maximize();
         homePage = new HomePage(driver);
     }

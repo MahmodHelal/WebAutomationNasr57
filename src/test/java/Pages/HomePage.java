@@ -9,6 +9,7 @@ public class HomePage {
     WebDriver driver;
 
     By formLinkBy = By.linkText("Form Authentication");
+    By checkBoxLocator = By.linkText("Checkboxes");
 
 
     public HomePage(WebDriver driver){
@@ -18,6 +19,11 @@ public class HomePage {
     public FormPage goToFormPage(){
         driver.findElement(formLinkBy).click();
         return new FormPage(driver);
+    }
+
+    public CheckBoxesPage clickOnCheckBoxes(){
+        driver.findElement(checkBoxLocator).click();
+        return new CheckBoxesPage(driver);
     }
 
 
