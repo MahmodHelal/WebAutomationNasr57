@@ -1,4 +1,4 @@
-package Pages;
+package Pages.Form;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -23,7 +23,7 @@ public FormPage(WebDriver driver){
     public void  enterPassword(String password){
         driver.findElement(passwordBy).sendKeys(password);
     }
-    public SecureArea  clickLoginButton(){
+    public SecureArea clickLoginButton(){
         driver.findElement(loginButtonBy).click();
         return new SecureArea(driver);
     }

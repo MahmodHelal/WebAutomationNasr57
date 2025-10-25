@@ -1,8 +1,9 @@
 package Pages;
 
+import Pages.DynamicLoading.DynamicLoadingPage;
+import Pages.Form.FormPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 public class HomePage {
 
@@ -11,9 +12,8 @@ public class HomePage {
     By formLinkBy = By.linkText("Form Authentication");
     By checkBoxLocator = By.linkText("Checkboxes");
     By dropDownLocator = By.linkText("Dropdown");
-
     By addRemoveLocator = By.linkText("Add/Remove Elements");
-
+    By dynamicLoadingLocator = By.linkText("Dynamic Loading");
 
     public HomePage(WebDriver driver){
         this.driver = driver;
@@ -37,6 +37,12 @@ public class HomePage {
         driver.findElement(dropDownLocator).click();
         return new DropdownPage(driver);
     }
+
+    public DynamicLoadingPage clickOnDynamicLoadingPage(){
+        driver.findElement(dynamicLoadingLocator).click();
+        return new DynamicLoadingPage(driver);
+    }
+
 
 
 

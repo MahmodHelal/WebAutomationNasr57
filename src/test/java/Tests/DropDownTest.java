@@ -14,8 +14,16 @@ public class DropDownTest extends BaseTest {
     }
 
     @Test
-    public void ensureSelectByIndex(){
+    public void ensureSelectByIndex() throws InterruptedException {
         homePage.clickOnDropdown();
         dropdownPage.selectByIndex(1);
+        Thread.sleep(1000);
+    }
+
+    @Test
+    public void ensureSelectByValue() throws InterruptedException {
+        homePage.clickOnDropdown();
+        dropdownPage.selectByValue("1");
+        Thread.sleep(1000);
     }
 }

@@ -23,5 +23,8 @@ public class DropdownPage {
         Select select = new Select(driver.findElement(dropDownLocator));
         select.selectByIndex(index);
     }
-
+public void selectByValue(String value){
+    Select select = new Select(driver.findElement(dropDownLocator));
+    select.selectByValue(value);
+}
 }
