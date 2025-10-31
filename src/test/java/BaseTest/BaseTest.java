@@ -1,15 +1,19 @@
 package BaseTest;
 
 import Pages.*;
+import Pages.Alerts.AlertPage;
+import Pages.ContextMenu.ContextMenuPage;
+import Pages.DragAndDrop.DragAndDropPage;
 import Pages.DynamicLoading.DynamicLoadingPage;
 import Pages.DynamicLoading.Examples.Ex1;
 import Pages.Form.FormPage;
 import Pages.Form.SecureArea;
-import io.github.bonigarcia.wdm.WebDriverManager;
+
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeMethod;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+import org.testng.annotations.*;
+
 
 public class BaseTest {
 
@@ -22,26 +26,45 @@ public class BaseTest {
     protected DropdownPage dropdownPage;
     protected DynamicLoadingPage dynamicLoadingPage;
     protected Ex1 ex1;
-
+    protected AlertPage alertPage;
+    protected ContextMenuPage contextMenuPage;
+    protected DragAndDropPage dragAndDropPage;
+/*
     @BeforeClass
     public void setup(){
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+//        WebDriverManager.chromedriver().setup();
+        DriverFactory.setDriver(new FirefoxDriver());
+        driver = DriverFactory.getDriver();
         driver.manage().window().maximize();
         homePage = new HomePage(driver);
     }
 
     @BeforeMethod
     public void goToFormPage(){
-        driver.get("https://the-internet.herokuapp.com/");
-    }
-
-
-/*    @AfterClass
-    public void tearDown(){
-        if (driver != null){
-            driver.quit();
-        }
+        DriverFactory.setDriver(driver);
+        DriverFactory.getDriver().get("https://the-internet.herokuapp.com/");
     }*/
 
+
+/*
+    @AfterClass
+    public void tearDown(){
+        DriverFactory.removeDriver();
+    }
+*/
+
+
+    @BeforeMethod
+    public void setUp() {
+        WebDriver d = new FirefoxDriver();            // new driver per method
+        DriverFactory.setDriver(d);                         // bind to this thread
+        d.manage().window().maximize();
+        d.get("https://the-internet.herokuapp.com/"); // open home
+        homePage = new HomePage(d);                   // page per driver
+    }
+
+/*    @AfterMethod(alwaysRun = true)
+    public void tearDown() {
+        DriverFactory.removeDriver();                         // clean this thread's driver
+    }*/
 }

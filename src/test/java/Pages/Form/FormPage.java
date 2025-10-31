@@ -2,13 +2,18 @@ package Pages.Form;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
+
 public class FormPage {
     WebDriver driver;
-    String Test = " Hello From FormPage Constructor";
-
+WebDriverWait wait;
 public FormPage(WebDriver driver){
     this.driver = driver;
-    System.out.println(Test);
+    wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
 }
     By userNameBy = By.id("username");
     By passwordBy = By.id("password");
@@ -24,22 +29,20 @@ public FormPage(WebDriver driver){
         driver.findElement(passwordBy).sendKeys(password);
     }
     public SecureArea clickLoginButton(){
-        driver.findElement(loginButtonBy).click();
+        wait.until(ExpectedConditions.elementToBeClickable(loginButtonBy)).click();
         return new SecureArea(driver);
     }
 
     private String getActualFailedMessage(){
-        return driver.findElement(actualFailedMessageBy).getText();
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(actualFailedMessageBy)).getText();
     }
 
     public boolean isLoginFailedCaseUsername(){
-
         return getActualFailedMessage().contains(expectedFailureMessageTextForUserName);
 
     }
 
     public boolean isLoginFailedCasePassword(){
-
         return getActualFailedMessage().contains(expectedFailureMessageTextForPassword);
 
     }

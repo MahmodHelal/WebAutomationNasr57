@@ -38,7 +38,7 @@ public class LoginTests extends BaseTest {
         formPage = homePage.goToFormPage();
         formPage.enterUsername("tomsmith");
         formPage.enterPassword("!");
-        secureArea = formPage.clickLoginButton();
+        formPage.clickLoginButton();
         Assert.assertTrue(formPage.isLoginFailedCasePassword());
 
     }
