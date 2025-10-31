@@ -1,8 +1,6 @@
 package Pages;
 
-import Pages.Alerts.AlertPage;
-import Pages.ContextMenu.ContextMenuPage;
-import Pages.DragAndDrop.DragAndDropPage;
+
 import Pages.DynamicLoading.DynamicLoadingPage;
 import Pages.Form.FormPage;
 import org.openqa.selenium.By;
@@ -23,8 +21,6 @@ public class HomePage {
     By addRemoveLocator = By.linkText("Add/Remove Elements");
     By dynamicLoadingLocator = By.linkText("Dynamic Loading");
     By alertsLocator = By.linkText("JavaScript Alerts");
-    By contextMenuLocator = By.linkText("Context Menu");
-    By dragAndDropLocator = By.linkText("Drag and Drop");
 
     public HomePage(WebDriver driver){
         this.driver = driver;
@@ -54,20 +50,12 @@ public class HomePage {
         driver.findElement(dynamicLoadingLocator).click();
         return new DynamicLoadingPage(driver);
     }
-    public AlertPage clickOnAlertsPage(){
+
+    public AlertPage clickOnAlertsPage() {
         driver.findElement(alertsLocator).click();
         return new AlertPage(driver);
     }
 
-    public ContextMenuPage clickOnContextMenu(){
-        driver.findElement(contextMenuLocator).click();
-        return new ContextMenuPage(driver);
-    }
-
-    public DragAndDropPage clickOnDragAndDrop(){
-        driver.findElement(dragAndDropLocator).click();
-        return new DragAndDropPage(driver);
-    }
 
 
 
